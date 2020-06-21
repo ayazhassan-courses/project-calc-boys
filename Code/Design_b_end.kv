@@ -1,0 +1,379 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>:
+    name: "standard"
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            Button:
+                text: "Scientific"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "scientific"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Converter"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "converter"
+                    root.manager.transition.direction = "left"
+        BoxLayout:
+            id: b_layout
+            orientation: 'horizontal'
+            
+            
+                        
+
+<SecondWindow>:
+    name: "scientific"
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.1
+            Button:
+                text: "Standard"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "standard"
+                    root.manager.transition.direction = "right"
+            Button:
+                text: "Converter"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "converter"
+                    root.manager.transition.direction = "left"
+        BoxLayout:
+            id: s_layout
+            orientation:'horizontal'
+
+<ThirdWindow>:
+    name: "converter"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.1
+            Button:
+                text: "Standard"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "standard"
+                    root.manager.transition.direction = "right"
+            Button:
+                text: "Scientific"
+                background_color: [128, 128, 128, 0.2]
+                on_release:
+                    app.root.current = "scientific"
+                    root.manager.transition.direction = "right"
+        BoxLayout:
+            id: c_layout
+            orientation: "vertical"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+##            Label:
+##                text: "Speed"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    #halign: "Left"
+##                    #font_size = 40
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Temperature"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Volume"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Distance"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Time"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Weight and Mass"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+##
+##            Label:
+##                text: "Angle"
+##                size_hint: 1, 0.1
+##            BoxLayout:
+##                orientation: "horizontal"
+##                size_hint: 1, 0.2
+##                TextInput:
+##                    multiline: False
+##                    readonly: False
+##                    halign: "right"
+##                Button:
+##                    id: btn
+##                    text: 'Press'
+##                    on_release: dropdown.open(self)
+##                    DropDown:
+##
+##                        id: dropdown
+##                        #on_parent: self.dismiss()
+##                        on_select: btn.text = '{}'.format(args[1])
+##
+##                        Button:
+##                            text: 'First Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('First Item')
+##
+##                        Label:
+##                            text: 'Second Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##
+##                        Button:
+##                            text: 'Third Item'
+##                            size_hint_y: None
+##                            #height: '48dp'
+##                            on_release: dropdown.select('Third Item')
+        
+        
+        
