@@ -159,7 +159,7 @@ class MainWindow(Screen):
         
         def fix_expression(exp):
             final = ""
-            num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+            num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0","."]
             for k in range(len(exp)):
                 if exp[k] in num and k != (len(exp)-1) and exp[k+1] in num:
                     final += exp[k]
@@ -407,7 +407,7 @@ class SecondWindow(Screen):
                 elif i == "Tan":
                     temp = float(pop(lst))
                     s = float(math.tan(temp))
-                    push(tan, s)
+                    push(lst, s)
                 else:
                     push(lst,i)
             return lst[0]
