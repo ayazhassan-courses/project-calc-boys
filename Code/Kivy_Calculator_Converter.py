@@ -36,10 +36,8 @@ class MainWindow(Screen):
         for row in buttons:
             h_layout = BoxLayout()
             for label in row:
-##                button = Button(text=label, pos_hint={"center_x": 0.5, "center_y": 0.5},
-##                                background_color=[192, 192, 192, 0.3])
                 if label in no_colour:
-                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [128, 128, 128, 0.1]) #[192,192,192,0.3])
+                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [128, 128, 128, 0.1]) 
                 else:
                     button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [0,0,255, 0.5])
                 button.bind(on_press=self.on_button_press)
@@ -58,7 +56,6 @@ class MainWindow(Screen):
         overall_2.add_widget(self.history)
         overall_2.add_widget(clear)
         overall.add_widget(overall_2)
-        # self.add_widget(main_layout)
         self.ids.b_layout.add_widget(overall)
 
     def clear_h(self, instance):
@@ -159,7 +156,7 @@ class MainWindow(Screen):
         
         def fix_expression(exp):
             final = ""
-            num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0","."]
+            num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
             for k in range(len(exp)):
                 if exp[k] in num and k != (len(exp)-1) and exp[k+1] in num:
                     final += exp[k]
@@ -177,18 +174,6 @@ class MainWindow(Screen):
             self.solution.text = solution
             self.history.text += solution + "\n"
             
-
-
-        
-
-##    def on_solution(self, instance):
-##        text = self.solution.text
-##        self.history.text += text + "="
-##        if text:
-##            solution = str(eval(self.solution.text))
-##            self.solution.text = solution
-##            self.history.text += solution + "\n"
-
 
 class SecondWindow(Screen):
     operators = ListProperty(["/", "*", "+", "-"])
@@ -212,16 +197,14 @@ class SecondWindow(Screen):
         for row in buttons:
             h_layout = BoxLayout()
             for label in row:
-##                button = Button(text=label, pos_hint={"center_x": 0.5, "center_y": 0.5},
-##                                background_color=[192, 192, 192, 0.3])
                 if label in no_colour:
-                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [128, 128, 128, 0.1]) #[192,192,192,0.3])
+                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [128, 128, 128, 0.1])
                 else:
-                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [0,0,255, 0.5])#[0,0,255, 0.7] blue #[0, 51, 255,0.2]
+                    button = Button(text= label, pos_hint = {"center_x":0.5, "center_y":0.5}, background_color = [0,0,255, 0.5])
                 button.bind(on_press=self.on_button_press)
                 h_layout.add_widget(button)
             main_layout.add_widget(h_layout)
-        equals_button = Button(text="=", pos_hint={"center_x": 0.5, "center_y": 0.5},  #, color=[192, 192, 192, 10]
+        equals_button = Button(text="=", pos_hint={"center_x": 0.5, "center_y": 0.5},
                                background_color=[128, 128, 128, 0.1])
         equals_button.bind(on_press=self.on_solution)
         main_layout.add_widget(equals_button)
@@ -234,7 +217,6 @@ class SecondWindow(Screen):
         overall_2.add_widget(self.history)
         overall_2.add_widget(clear)
         overall.add_widget(overall_2)
-        # self.add_widget(main_layout)
         self.ids.s_layout.add_widget(overall)
 
     def clear_h(self, instance):
@@ -248,12 +230,6 @@ class SecondWindow(Screen):
             self.solution.text = ""
         elif button_text == "\u03C0":
             self.solution.text = current + "(22/7)"
-##        elif button_text == "Sin":
-##            self.solution.text = str(math.sin(eval(current)))
-##        elif button_text == "Cos":
-##            self.solution.text = str(math.cos(eval(current)))
-##        elif button_text == "Tan":
-##            self.solution.text = str(math.tan(eval(current)))
         elif button_text == "n!":
             self.solution.text = str(math.factorial(eval(current)))
         elif button_text == "e":
@@ -312,8 +288,6 @@ class SecondWindow(Screen):
         self.last_operator = self.last_button in self.operators
 
     def on_solution(self, instance):
-        #if ("Sin" in text) or ("Cos" in text) or ("Tan" in text):
-
         def top(lst):
             return lst[len(lst)-1]
 
@@ -438,38 +412,8 @@ class SecondWindow(Screen):
             solution = str(postfixEval(temp))
             self.solution.text = solution
             self.history.text += solution + "\n"
-##        elif text:
-##            solution = str(eval(self.solution.text))
-##            self.solution.text = solution
-##            self.history.text += solution + "\n"
-
 
 class ThirdWindow(Screen):
-    ##    value_input_box = ObjectProperty()
-    ##    sub_unit = ObjectProperty()
-    ##    def menu_label(self, spinner):
-    ##        if spinner.text == "Length":
-    ##            self.sub_unit.text = "Meter (m)"
-    ##            self.sub_unit.values = ('Meter (m)', 'Kilometer (km)', 'Centimeter (cm)', 'Milimeter (mm)', 'Mile (mile)', 'Yard (yd)', 'Feet (ft)', 'Inch (in)')
-    ##        elif spinner.text == 'Area':
-    ##            self.sub_unit.text = 'Square Meter (m[sup]2[/sup])'
-    ##            self.sub_unit.values = ('Square Meter (m[sup]2[/sup])', 'Square Kilometer (km[sup]2[/sup])', 'Square Centimeter (cm[sup]2[/sup])', 'Square Milimeter (mm[sup]2[/sup])', 'Square Mile (mile[sup]2[/sup])', 'Acre (acre)', 'Hectare (ha)', 'Square Yard (yd[sup]2[/sup])', 'Square Feet (ft[sup]2[/sup])', 'Square Inch (in[sup]2[/sup])')
-    ##        elif spinner.text == 'Volume':
-    ##            self.sub_unit.text = 'Cubic Meter (m[sup]3[/sup])'
-    ##      self.sub_unit.values = ('Cubic Meter (m[sup]3[/sup])', 'Liter (l)', 'Mililiter (ml)', 'Cubic Millimeter (mm[sup]3[/sup])', 'Tablespoon-UK (tblspn)', 'Teaspoon-UK (tspn)', 'Gallon-UK (gal)', 'Ounce-UK (oz)', 'Pint-UK (pint)', 'Quart-UK (quart)')
-    ##        elif spinner.text == 'Temparature':
-    ##      self.sub_unit.text = 'Celcius ([sup]o[/sup]C)'
-    ##      self.sub_unit.values = ('Celcius ([sup]o[/sup]C)', 'Fahrenheit ([sup]o[/sup]F)', 'Kelvin (K)')
-    ##  elif spinner.text == 'Weight':
-    ##      self.sub_unit.text = 'Gram (g)'
-    ##            self.sub_unit.values = ('Gram (g)', 'Kilogram (kg)', 'Miligram (mg)', 'Pound (lb)', 'Ounce (oz)', 'Tonne-UK (ton)')
-    ##        elif spinner.text == 'Speed':
-    ##      self.sub_unit.text = 'Meter per Second (m/s)'
-    ##      self.sub_unit.values = ('Meter per Second (m/s)', 'Kilometer per Hour (km/h)', 'Mile per Hour (mile/h)', 'Feet per Minute (ft/min)', 'Feet per Second (ft/s)')
-    ##  elif spinner.text == 'Time':
-    ##      self.sub_unit.text = 'Seconds (s)'
-    ##      self.sub_unit.values = ('Seconds (s)', 'Minute (min)', 'Hour (hr)', 'Day (day)', 'Week (wk)', 'Month (mo)', 'Year (yr)', 'Decade (dec)', 'Century (c)')
-    ##
     def on_kv_post(self, *args):
         main_layout = BoxLayout(orientation="vertical")
         # time
@@ -478,7 +422,6 @@ class ThirdWindow(Screen):
         self.time_1_spinner = Spinner(text='Second(s)', values=(
             'Second(s)', 'Minute(min)', 'Hour(hr)', 'Day(day)', 'Week(wk)', 'Month(mo)', 'Year (yr)'), background_color = [0,0,255, 0.5])
 
-        # self.time_1_spinner.bind(text=self.on_time_select)
 
         self.time1 = TextInput(multiline=False, readonly=False, halign="right", font_size=40)
         self.time_2_spinner = Spinner(text='Second(s)', values=(
@@ -615,7 +558,7 @@ class ThirdWindow(Screen):
                 self.time2.text = self.time1.text
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) / 60)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
+
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) / 3600)
             elif self.time_2_spinner.text == "Day(day)":
@@ -634,7 +577,6 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 60)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = self.time1.text
-                # self.time2.text = str(eval(self.time1.text + "/60"))
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) / 60)
             elif self.time_2_spinner.text == "Day(day)":
@@ -653,7 +595,6 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 3600)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) * 60)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = self.time1.text
             elif self.time_2_spinner.text == "Day(day)":
@@ -672,7 +613,7 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 86400)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) * 1440)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
+                
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) * 24)
             elif self.time_2_spinner.text == "Day(day)":
@@ -691,7 +632,7 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 604800)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) * 10080)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
+
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) * 168)
             elif self.time_2_spinner.text == "Day(day)":
@@ -710,7 +651,7 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 2628000)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) * 43800)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
+
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) * 730.001)
             elif self.time_2_spinner.text == "Day(day)":
@@ -729,7 +670,6 @@ class ThirdWindow(Screen):
                 self.time2.text = str(float(self.time1.text) * 31540000)
             elif self.time_2_spinner.text == "Minute(min)":
                 self.time2.text = str(float(self.time1.text) * 525600)
-                # self.time2.text = str(eval(self.time1.text + "/60"))
             elif self.time_2_spinner.text == "Hour(hr)":
                 self.time2.text = str(float(self.time1.text) * 8760)
             elif self.time_2_spinner.text == "Day(day)":
